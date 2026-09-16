@@ -8,3 +8,6 @@ CREATE TABLE [dbo].[employees] (
     [email]          VARCHAR (100) MASKED WITH (FUNCTION = 'email()')                 NULL,
     [manager_region] VARCHAR (50)                                                     NULL
 );
+
+
+GO
