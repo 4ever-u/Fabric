@@ -1,0 +1,306 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "dac8a24d-7c1b-a3bf-4494-7867da392e97",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "destination": {
+      "type": "DataWarehouseTable",
+      "connectionSettings": {
+        "type": "DataWarehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "0c414a7d-5268-bfc8-4ca4-6bddec718e39",
+          "endPoint": "aef3bku7ecfe5e3w3vgnrgsdye-moylipxbtgtubnuqezaambb4aq.datawarehouse.fabric.microsoft.com"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00",
+      "retry": 0
+    }
+  },
+  "activities": [
+    {
+      "id": "e0345046-e251-429b-8589-1356e305c520",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "customers"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "tableOption": "autoCreate",
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "customers"
+          }
+        },
+        "enableStaging": true,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "customer_id",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "customer_id",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "name",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "name",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            },
+            {
+              "source": {
+                "name": "email",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "email",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            },
+            {
+              "source": {
+                "name": "city",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "city",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            },
+            {
+              "source": {
+                "name": "country",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "country",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "5eb21514-eff3-4ed3-8ab4-b18091fefb8e",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "orders"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "tableOption": "autoCreate",
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "orders"
+          }
+        },
+        "enableStaging": true,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "order_id",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "order_id",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "customer_id",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "customer_id",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "product_id",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "product_id",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "quantity",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "quantity",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "order_date",
+                "type": "Date",
+                "physicalType": "date"
+              },
+              "destination": {
+                "name": "order_date",
+                "physicalType": "date"
+              }
+            },
+            {
+              "source": {
+                "name": "total_amount",
+                "type": "Single",
+                "physicalType": "float"
+              },
+              "destination": {
+                "name": "total_amount",
+                "physicalType": "real"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "a86c0e48-4ca4-41e9-8818-91a5c868575a",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "products"
+          },
+          "partitionSettings": {
+            "partitionOption": "None"
+          }
+        },
+        "destination": {
+          "tableOption": "autoCreate",
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "silver",
+            "table": "products"
+          }
+        },
+        "enableStaging": true,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "product_id",
+                "type": "Int32",
+                "physicalType": "integer"
+              },
+              "destination": {
+                "name": "product_id",
+                "physicalType": "int"
+              }
+            },
+            {
+              "source": {
+                "name": "product_name",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "product_name",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            },
+            {
+              "source": {
+                "name": "category",
+                "type": "String",
+                "physicalType": "string"
+              },
+              "destination": {
+                "name": "category",
+                "physicalType": "varchar",
+                "length": "8000"
+              }
+            },
+            {
+              "source": {
+                "name": "price",
+                "type": "Single",
+                "physicalType": "float"
+              },
+              "destination": {
+                "name": "price",
+                "physicalType": "real"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

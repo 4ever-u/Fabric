@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventhouse",
+    "displayName": "livestream_eventhouse",
+    "description": "livestream_eventhouse"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8c65ee6c-ce4c-a2c8-45fe-b116069b9017"
+  }
+}

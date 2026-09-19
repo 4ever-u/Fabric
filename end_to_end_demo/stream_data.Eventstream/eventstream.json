@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "id": "9ef7abb2-66bf-4015-8c57-d8bd7fe162d0",
+      "name": "Bicycles",
+      "type": "SampleData",
+      "properties": {
+        "type": "Bicycles"
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "2885b25b-fad1-45b0-94fd-57b94666962c",
+      "name": "Eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "f622f99a-6d14-80f1-435b-f5e43ce3f1ce",
+        "databaseName": "livestream_eventhouse",
+        "tableName": "bikes",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "stream_data-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "stream_data-stream",
+          "schema": {
+            "columns": []
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "79369dcc-83e8-49e9-bc5d-8480c0943d43",
+      "name": "stream_data-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "Bicycles"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

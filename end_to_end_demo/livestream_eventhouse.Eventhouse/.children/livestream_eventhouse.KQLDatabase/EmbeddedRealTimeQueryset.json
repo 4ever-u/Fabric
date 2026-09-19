@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "cd85a891-8c75-42c5-917c-99a1779f4470",
+        "clusterUri": "https://trd-b9zky843x3vdc503a5.z9.kusto.fabric.microsoft.com",
+        "type": "Fabric",
+        "databaseItemId": "3ce3f1ce-f5e4-435b-80f1-6d14f622f99a"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "90e0c09d-fabf-4a4a-8e89-ad2f0b10f418",
+        "content": "bikes\n| count",
+        "title": "",
+        "dataSourceId": "cd85a891-8c75-42c5-917c-99a1779f4470"
+      }
+    ],
+    "querysetType": "Embedded"
+  }
+}
