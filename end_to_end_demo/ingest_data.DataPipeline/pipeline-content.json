@@ -66,7 +66,7 @@
                 "firstRowAsHeader": true
               },
               "schema": [],
-              "connectionSettings": {
+              "linkedService": {
                 "name": "main_lakehouse",
                 "properties": {
                   "type": "Lakehouse",
@@ -74,9 +74,6 @@
                     "artifactId": "dac8a24d-7c1b-a3bf-4494-7867da392e97",
                     "workspaceId": "00000000-0000-0000-0000-000000000000",
                     "rootFolder": "Files"
-                  },
-                  "externalReferences": {
-                    "connection": "5db0960b-fdc9-4f38-8f0c-ff348f7d7b5d"
                   },
                   "annotations": []
                 }
@@ -176,7 +173,37 @@
           "secureOutput": false
         },
         "name": "Copy CSV files to bronze layer",
+        "state": "Active",
         "dependsOn": []
+      },
+      {
+        "type": "MicrosoftTeams",
+        "typeProperties": {
+          "content": "@activity('Copy CSV files to bronze layer').error.message",
+          "teamId": "fa75ccdb-db12-4be0-be80-055f2df68fca",
+          "channelId": "19:afBfzjO_Y4BFuqZ1myySJb1jUoQG8kM8f1q-Xuxp9wk1@thread.tacv2",
+          "operationType": "SendMessageInChannel",
+          "subject": "Pipeline Failure Alert"
+        },
+        "externalReferences": {
+          "connection": "f639fcdb-0517-440d-b837-1c7e4110bd7f"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Failure Alert",
+        "dependsOn": [
+          {
+            "activity": "Copy CSV files to bronze layer",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
       }
     ]
   }

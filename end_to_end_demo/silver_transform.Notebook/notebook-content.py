@@ -100,3 +100,26 @@ df_product.write.format("delta").mode("overwrite").saveAsTable("silver.products"
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+df = spark.sql("SELECT * FROM main_lakehouse.silver.orders LIMIT 1000")
+spark.sql("OPTIMIZE silver.orders")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+spark.sql("OPTIMIZE silver.orders ZORDER BY (quantity)")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
